@@ -3,6 +3,9 @@ use std::sync::{Arc, Mutex};
 use ringbuf::HeapRb;
 use ringbuf::Rb;
 
+// A simple buffer that can be used to store data from multiple threads.
+// NOTE: This buffer has a limited capacity and will overwrite data if 
+// it is not read fast enough.
 #[derive(Clone)]
 pub struct Buffer<T> {
     data: Arc<Mutex<HeapRb<T>>>,
