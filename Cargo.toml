@@ -3,7 +3,12 @@ name = "simple-buffer"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+default = ["ring"]
+ring = ["dep:ringbuf"]
+
+[dependencies]
+ringbuf = { version = "0.3", optional = true, features = ["alloc"] }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }
